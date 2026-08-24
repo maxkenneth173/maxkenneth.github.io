@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Portal del Sol - Reservaciones</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">PORTAL DEL SOL</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="menu.html">Servicios y Menú</a></li>
+                <li><a href="reservaciones.html" class="active">Reservaciones</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h2 class="section-title animated-fade">Reserva tu Estadía</h2>
+        
+        <div class="form-container animated-fade delay-1">
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="nombre">Nombre Completo</label>
+                    <input type="text" id="nombre" class="form-control" placeholder="Ej. Juan Pérez" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Correo Electrónico</label>
+                    <input type="email" id="email" class="form-control" placeholder="ejemplo@correo.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="habitacion">Tipo de Habitación</label>
+                    <select id="habitacion" class="form-control" required>
+                        <option value="">Selecciona una opción...</option>
+                        <option value="deluxe">Habitación Deluxe</option>
+                        <option value="familiar">Suite Familiar</option>
+                        <option value="presidencial">Master Suite Presidencial</option>
+                    </select>
+                </div>
+
+                <div class="form-group" style="display: flex; gap: 1rem;">
+                    <div style="flex: 1;">
+                        <label for="checkin">Fecha de Entrada</label>
+                        <input type="date" id="checkin" class="form-control" required>
+                    </div>
+                    <div style="flex: 1;">
+                        <label for="checkout">Fecha de Salida</label>
+                        <input type="date" id="checkout" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="huespedes">Número de Huéspedes</label>
+                    <input type="number" id="huespedes" class="form-control" min="1" max="10" value="1" required>
+                </div>
+
+                <button type="submit" class="btn" style="width: 100%;">Confirmar Solicitud de Reserva</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Hotel Portal del Sol. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>

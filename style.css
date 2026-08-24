@@ -1,0 +1,321 @@
+/* ==========================================
+   VARIABLES Y CONFIGURACION 
+   ========================================== */
+:root {
+    --primary-color: #0f172a;     /* Azul pizarra oscuro (Ultra moderno) */
+    --accent-color: #c5a880;      /* Dorado champaña (Más sutil y elegante) */
+    --text-color: #334155;        /* Gris slate para lectura descansada */
+    --bg-light: #f8fafc;          /* Fondo base limpio */
+    --white: #ffffff;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); /* Transición ultra suave */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Playfair Display', 'Segoe UI', serif; /* Mezcla de tipografía elegante */
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-color);
+    line-height: 1.7;
+}
+
+/* ==========================================
+   ANIMACIONES FLUIDAS
+   ========================================== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.animated-fade {
+    animation: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.delay-1 { animation-delay: 0.15s; opacity: 0; animation-fill-mode: forwards; }
+.delay-2 { animation-delay: 0.3s; opacity: 0; animation-fill-mode: forwards; }
+
+/* ==========================================
+   HEADER CON EFECTO TRANSLÚCIDO (Glassmorphism)
+   ========================================== */
+header {
+    background-color: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(8px); /* Desfoque de fondo premium */
+    padding: 1.2rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    animation: slideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    color: var(--accent-color);
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: var(--transition);
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: var(--transition);
+    transform: translateX(-50%);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--white);
+}
+
+/* ==========================================
+   HERO / BIENVENIDA
+   ========================================== */
+.hero {
+    background: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.8)), 
+                url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--white);
+    text-align: center;
+    padding: 0 1.5rem;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    letter-spacing: 3px;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.hero p {
+    font-size: 1.25rem;
+    color: #cbd5e1;
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+}
+
+/* ==========================================
+   BOTONES ELEGANTES
+   ========================================== */
+.btn {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: 50px; /* Bordes totalmente redondeados tipo botón moderno */
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+}
+
+.btn:hover {
+    background-color: var(--white);
+    color: var(--primary-color);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* ==========================================
+   TARJETAS DE CONTENIDO (Cards de UI Limpia)
+   ========================================== */
+.container {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+}
+
+.section-title {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 4rem;
+    font-size: 2.8rem;
+    font-weight: 300;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 2px;
+    background-color: var(--accent-color);
+    margin: 1rem auto 0;
+}
+
+.grid-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 3rem;
+}
+
+.card {
+    background-color: var(--white);
+    border-radius: 16px; /* Esquinas más suaves */
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    transition: var(--transition);
+}
+
+.card:hover {
+    transform: translateY(-12px);
+    box-shadow: var(--shadow-lg);
+}
+
+.card-img {
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+    transition: var(--transition);
+}
+
+.card:hover .card-img {
+    transform: scale(1.05); /* Efecto zoom sutil en la foto */
+}
+
+.card-content {
+    padding: 2rem;
+}
+
+.card-content h3 {
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+}
+
+.card-content p {
+    color: #64748b;
+    font-size: 0.95rem;
+}
+
+/* ==========================================
+   FORMULARIOS
+   ========================================== */
+.form-container {
+    max-width: 550px;
+    margin: 4rem auto;
+    background-color: var(--white);
+    padding: 3.5rem;
+    border-radius: 20px;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(0, 0, 0, 0.02);
+}
+
+.form-group {
+    margin-bottom: 2rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.6rem;
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    background-color: #f8fafc;
+    color: var(--primary-color);
+    font-size: 1rem;
+    outline: none;
+    transition: var(--transition);
+}
+
+.form-control:focus {
+    border-color: var(--accent-color);
+    background-color: var(--white);
+    box-shadow: 0 0 0 4px rgba(197, 168, 128, 0.15);
+}
+
+textarea.form-control {
+    resize: none;
+    height: 140px;
+}
+
+/* ==========================================
+   FOOTER
+   ========================================== */
+footer {
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-align: center;
+    padding: 3rem;
+    margin-top: 6rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+footer p {
+    color: #64748b;
+    font-size: 0.95rem;
+}
