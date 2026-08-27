@@ -24,8 +24,9 @@
     <main class="container">
         <h2 class="section-title animated-fade">Ponte en Contacto</h2>
         
-        <div class="form-container animated-fade delay-1">
-            <form action="#" method="POST">
+      
+        <div id="form-contacto" class="form-container animated-fade delay-1">
+            <form onsubmit="enviarMensaje(event)">
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
                     <input type="text" id="nombre" class="form-control" placeholder="Escribe tu nombre" required>
@@ -49,11 +50,42 @@
                 <button type="submit" class="btn" style="width: 100%;">Enviar Mensaje</button>
             </form>
         </div>
+
+      
+        <div id="mensaje-exito" class="form-container animated-fade" style="display: none; text-align: center;">
+            <div style="font-size: 3.5rem; color: var(--accent-color); margin-bottom: 1rem;">✓</div>
+            <h3 style="color: var(--primary-color); font-size: 1.8rem; margin-bottom: 1rem;">¡Mensaje Enviado!</h3>
+            <p style="color: var(--text-color); margin-bottom: 2rem;">
+                Gracias por contactarnos. Hemos recibido tu mensaje correctamente y nos pondremos en contacto contigo a la brevedad.
+            </p>
+            <button type="button" onclick="volverAEnviar()" class="btn">Enviar otro mensaje</button>
+        </div>
     </main>
 
     <footer>
         <p>&copy; 2026 Hotel Portal del Sol. Todos los derechos reservados.</p>
     </footer>
+
+ 
+    <script>
+        function enviarMensaje(e) {
+            e.preventDefault();
+            document.getElementById('form-contacto').style.display = 'none';
+            document.getElementById('mensaje-exito').style.display = 'block';
+        }
+
+        function volverAEnviar() {
+            var contenedorFormulario = document.getElementById('form-contacto');
+            var contenedorExito = document.getElementById('mensaje-exito');
+            
+            // Limpiar los campos cargados en el formulario
+            contenedorFormulario.querySelector('form').reset();
+            
+            // Alternar visibilidad de las cajas
+            contenedorExito.style.display = 'none';
+            contenedorFormulario.style.display = 'block';
+        }
+    </script>
 
 </body>
 </html>
